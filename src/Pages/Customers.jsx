@@ -3,8 +3,17 @@ import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inje
 
 import {customersData, customersGrid} from '../Data/dummy';
 import {Header} from '../Components';
+import { useNavigate } from 'react-router-dom';
 
 const Customers = () => {
+
+  const userData = (JSON.parse(localStorage.getItem("adminUser")));
+
+  const navigate = useNavigate();
+
+  if(!userData){
+      navigate("/login");
+  }
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
       <Header category="Page" title="Customers" />

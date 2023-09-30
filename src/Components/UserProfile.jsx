@@ -9,6 +9,8 @@ import avatar from '../Data/avatar.jpg';
 const UserProfile = () => {
   const { currentColor } = useStateContext();
 
+  const userData = (JSON.parse(localStorage.getItem("adminUser")));
+
   return (
     <div className="nav-item absolute right-1 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96">
       <div className="flex justify-between items-center">
@@ -28,9 +30,8 @@ const UserProfile = () => {
           alt="user-profile"
         />
         <div>
-          <p className="font-semibold text-xl dark:text-gray-200"> Michael Roberts </p>
-          <p className="text-gray-500 text-sm dark:text-gray-400">  Administrator   </p>
-          <p className="text-gray-500 text-sm font-semibold dark:text-gray-400"> info@shop.com </p>
+          <p className="font-semibold text-xl dark:text-gray-200"> {userData.name} </p>
+          <p className="text-gray-500 text-sm font-semibold dark:text-gray-400">{userData.email}</p>
         </div>
       </div>
       <div>
@@ -52,6 +53,7 @@ const UserProfile = () => {
         ))}
       </div>
       <div className="mt-5">
+      <a href='/logout'>
         <Button
           color="white"
           bgColor={currentColor}
@@ -59,6 +61,7 @@ const UserProfile = () => {
           borderRadius="10px"
           width="full"
         />
+        </a>
       </div>
     </div>
 

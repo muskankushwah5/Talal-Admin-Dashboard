@@ -1,0 +1,98 @@
+/* Card Container */
+.card {
+    width: 360px;
+    height: 260px;
+    display: flex;
+    margin: 4%;
+    margin-left: 6%;
+    margin-right: 6%;
+    margin-top: 10%;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    margin: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+  }
+
+  .double-card{
+    width: 340px;
+    height: 240px;
+
+    display: flex;
+    margin: 4%;
+    margin-left: 6%;
+    margin-right: 6%;
+    margin-top: 10%;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    margin: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+  }
+
+  @media screen and (max-width : 768px) {
+    .card{
+      flex-direction: column;
+      width: 80% ;
+      height: 70%;
+    }
+  }
+  .isdouble{
+    margin-top: 8%;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Card Image */
+  .card-image {
+    width: 90%;
+    height: 80%;
+    object-fit: cover;
+    margin: 5%;
+  }
+  
+  /* Card Actions */
+  .card-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+  }
+  
+  /* Edit and Delete Buttons */
+  .edit-button,
+  .delete-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .edit-button:hover,
+  .delete-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Media Query for Small Screens (Mobile) */
+  @media (max-width: 768px) {
+    .card {
+      margin: 6%;
+      flex-direction: column;
+      width: 80%;
+      height:70%;
+    }
+  
+    .card-image {
+      width: 80%;
+      height: 140px;
+    }
+  
+    .card-actions {
+      
+      padding: 5px;
+    }
+  }
+  

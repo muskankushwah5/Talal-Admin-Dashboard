@@ -1,16 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import { Navbar, Footer, Sidebar, ThemeSettings } from './Components';
-import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor } from './Pages';
+import { Ecommerce, Calendar, Stacked, AboutPage,Employees,Pyramid, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor, HomePage } from './Pages';
 import './App.css';
 
 import { useStateContext } from './Contexts/ContextProvider';
+import Testimonial from './Pages/Testimonial';
+import Services from './Pages/Services';
+import Contact from './Pages/Contact';
+import NineFieldForm from './Components/Form/Form';
+import axios from 'axios';
+import TestimonialPage from './Pages/Testimonials';
+import BarPage from './Pages/BarData';
+import Login from './Pages/Login';
+import LoginForm from './Pages/LoginForm';
+import Logout from './Pages/Logout';
 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
+
+  const userData = (JSON.parse(localStorage.getItem("adminUser")));
+
+  
 
   useEffect(() => {
     const currentThemeColor = localStorage.getItem('colorMode');
@@ -20,6 +34,10 @@ const App = () => {
       setCurrentMode(currentThemeMode);
     }
   }, []);
+  
+ 
+
+  
 
   return (
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
@@ -41,7 +59,7 @@ const App = () => {
 
             </TooltipComponent>
           </div>
-          {activeMenu ? (
+         { activeMenu  ? (
             <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
               <Sidebar />
             </div>
@@ -57,38 +75,28 @@ const App = () => {
                 : 'bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 '
             }
           >
-            <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
+           <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
               <Navbar />
             </div>
             <div>
               {themeSettings && (<ThemeSettings />)}
-
               <Routes>
-                {/* dashboard  */}
-                <Route path="/" element={(<Ecommerce />)} />
-                <Route path="/ecommerce" element={(<Ecommerce />)} />
 
-                {/* pages  */}
-                <Route path="/orders" element={<Orders />} />
-                <Route path="/employees" element={<Employees />} />
-                <Route path="/customers" element={<Customers />} />
+                <Route path="/" element={(<HomePage />)} />
 
-                {/* apps  */}
-                <Route path="/kanban" element={<Kanban />} />
-                <Route path="/editor" element={<Editor />} />
-                <Route path="/calendar" element={<Calendar />} />
-                <Route path="/color-picker" element={<ColorPicker />} />
+                
 
-                {/* charts  */}
-                <Route path="/line" element={<Line />} />
-                <Route path="/area" element={<Area />} />
-                <Route path="/bar" element={<Bar />} />
-                <Route path="/pie" element={<Pie />} />
-                <Route path="/financial" element={<Financial />} />
-                <Route path="/color-mapping" element={<ColorMapping />} />
-                <Route path="/pyramid" element={<Pyramid />} />
-                <Route path="/stacked" element={<Stacked />} />
-
+                <Route path="/homepage" element={<HomePage />} />
+                <Route path="/aboutpage" element={<AboutPage />} />
+                <Route path='/login' element={<Login/>}/>
+                
+                <Route path="/barpage" element={<BarPage />} />
+                <Route path="/testimonials" element={<TestimonialPage/>} />
+                <Route path="/services" element={<Services/>} />
+                <Route path="/contact" element={<Contact/>} />
+                <Route path="/add" element={<NineFieldForm/>} />
+                <Route path="/logout" element={<Logout/>} />
+                
               </Routes>
             </div>
             <Footer />
